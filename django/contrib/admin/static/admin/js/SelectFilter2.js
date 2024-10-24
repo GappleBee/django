@@ -75,7 +75,7 @@ Requires core.js and SelectBox.js.
             choose_all.className = 'selector-chooseall';
             const choose_all_help_text = document.createElement('span');
             choose_all_help_text.innerHTML = choose_all.title;
-            choose_all_help_text.className = "sr-only";
+            choose_all_help_text.className = "visually-hidden";
             choose_all.append(choose_all_help_text);
 
             // <ul class="selector-chooser">
