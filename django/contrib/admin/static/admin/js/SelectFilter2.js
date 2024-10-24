@@ -15,6 +15,7 @@ Requires core.js and SelectBox.js.
             const from_box = document.getElementById(field_id);
             from_box.id += '_from'; // change its ID
             from_box.className = 'filtered';
+            from_box.setAttribute("aria-label", "Available permissions");
 
             for (const p of from_box.parentNode.getElementsByTagName('p')) {
                 if (p.classList.contains("info")) {
@@ -67,10 +68,15 @@ Requires core.js and SelectBox.js.
 
             const filter_input = quickElement('input', filter_p, '', 'type', 'text', 'placeholder', gettext("Filter"));
             filter_input.id = field_id + '_input';
+            filter_input.setAttribute('aria-label', 'Filter available permissions')
 
             selector_available.appendChild(from_box);
             const choose_all = quickElement('a', selector_available, gettext('Choose all'), 'title', interpolate(gettext('Click to choose all %s at once.'), [field_name]), 'href', '#', 'id', field_id + '_add_all_link');
             choose_all.className = 'selector-chooseall';
+            const choose_all_help_text = document.createElement('span');
+            choose_all_help_text.innerHTML = choose_all.title;
+            choose_all_help_text.className = "sr-only";
+            choose_all.append(choose_all_help_text);
 
             // <ul class="selector-chooser">
             const selector_chooser = quickElement('ul', selector_div);
@@ -112,9 +118,12 @@ Requires core.js and SelectBox.js.
 
             const filter_selected_input = quickElement('input', filter_selected_p, '', 'type', 'text', 'placeholder', gettext("Filter"));
             filter_selected_input.id = field_id + '_selected_input';
+            filter_selected_input.setAttribute('aria-label', 'Filter chosen permissions')
 
             const to_box = quickElement('select', selector_chosen, '', 'id', field_id + '_to', 'multiple', '', 'size', from_box.size, 'name', from_box.name);
             to_box.className = 'filtered';
+            to_box.setAttribute("aria-label", "Chosen permissions");
+
             
             const warning_footer = quickElement('div', selector_chosen, '', 'class', 'list-footer-display');
             quickElement('span', warning_footer, '', 'id', field_id + '_list-footer-display-text');
