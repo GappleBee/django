@@ -73,6 +73,7 @@ Requires core.js and SelectBox.js.
             selector_available.appendChild(from_box);
             const choose_all = quickElement('a', selector_available, gettext('Choose all'), 'title', interpolate(gettext('Click to choose all %s at once.'), [field_name]), 'href', '#', 'id', field_id + '_add_all_link');
             choose_all.className = 'selector-chooseall';
+            
             const choose_all_help_text = document.createElement('span');
             choose_all_help_text.innerHTML = choose_all.title;
             choose_all_help_text.className = "visually-hidden";
